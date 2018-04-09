@@ -3,6 +3,7 @@ export class Canvas {
   container: HTMLElement = document.body;
   width:number = 500;
   height:number = 500;
+  svg?:SVGElement;
 
   /**
     Canvas for plotting the graph
@@ -26,6 +27,9 @@ export class Canvas {
       svg.setAttribute("id",this.name);
       svg.setAttribute("width",this.width+"px");
       svg.setAttribute("height", this.height+"px");
+
+      /*Store it*/
+      this.svg = svg;
 
       /* Add it to container */
       this.container.appendChild(svg);
