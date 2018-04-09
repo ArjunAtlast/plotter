@@ -1,9 +1,11 @@
+import { setElementAttributes } from "../helpers/utility";
+
 export class Canvas {
   name:string = "myCanvas";
   container: HTMLElement = document.body;
   width:number = 500;
   height:number = 500;
-  svg?:SVGElement;
+  private svg?:SVGElement;
 
   /**
     Canvas for plotting the graph
@@ -20,14 +22,21 @@ export class Canvas {
     this.height = height;
   }
 
+  /**
+    Initialize Canvas
+    @function
+    @return {boolean}
+  */
   init():boolean {
     try {
       /* Create SVG Element */
-      let svg = new SVGElement();
-      svg.setAttribute("id",this.name);
-      svg.setAttribute("width",this.width+"px");
-      svg.setAttribute("height", this.height+"px");
-
+      let svg = <SVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
+      console.log(svg);
+      setElementAttributes(svg, {
+        "id": this.name,
+        "width": this.width+"px",
+        "height": this.height+"px"
+      });
       /*Store it*/
       this.svg = svg;
 
@@ -38,5 +47,15 @@ export class Canvas {
     catch(error) {
       return false;
     }
+  }
+
+  /**
+    Plot elements to canvas
+    @function
+    @param {SVGElement} element - Element to be added to canvas
+  */
+  add(elem:SVGElement) {
+    if(this.svg != undefined) this.svg.appendChild(elem);
+    else throw new Error("Canvas not Initialized.");
   }
 }

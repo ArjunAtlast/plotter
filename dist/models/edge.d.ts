@@ -1,18 +1,18 @@
+import { Vertex } from "./vertex";
 import { Graphic } from "./graphic";
 import { Canvas } from "./canvas";
-export declare class Vertex {
-    x: number;
-    y: number;
-    radius: number;
+export declare class Edge {
+    start: Vertex;
+    end: Vertex;
     private _graphic;
     /**
-      Creates a new Vertex
+      Creates a new Edge
       @constructor
-      @param {number} x - X Coordinate
-      @param {number} y - Y Coordinate
-      @param {number} radius - Radius of the vertex when plotted
+      @param {Vertex} start - X Coordinate
+      @param {Vertex} y - Y Coordinate
+      @param {Graphic} radius - Radius of the vertex when plotted
     */
-    constructor(x: number, y: number, radius: number, graphic?: Graphic);
+    constructor(start: Vertex, end: Vertex, graphic?: Graphic);
     /**
       Set vertex style for plotting
       @function
@@ -28,7 +28,7 @@ export declare class Vertex {
     /**
       Generate SVG Circle Element for the vertex
       @function
-      @return {SVGCircleElement}
+      @return {SVG}
     */
     private genSVG();
 }

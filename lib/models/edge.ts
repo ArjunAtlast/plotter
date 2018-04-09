@@ -1,24 +1,23 @@
+import { Vertex } from "./vertex";
 import { Graphic } from "./graphic";
 import { Canvas } from "./canvas";
 import { setElementAttributes } from "../helpers/utility";
 
-export class Vertex {
-
-  x: number;
-  y: number;
-  radius: number;
+export class Edge {
+  start: Vertex;
+  end: Vertex;
   private _graphic: Graphic;
+
   /**
-    Creates a new Vertex
+    Creates a new Edge
     @constructor
-    @param {number} x - X Coordinate
-    @param {number} y - Y Coordinate
-    @param {number} radius - Radius of the vertex when plotted
+    @param {Vertex} start - X Coordinate
+    @param {Vertex} y - Y Coordinate
+    @param {Graphic} radius - Radius of the vertex when plotted
   */
-  constructor(x: number, y:number, radius:number, graphic?: Graphic) {
-    this.x = x;
-    this.y = y;
-    this.radius = radius;
+  constructor(start: Vertex, end: Vertex, graphic?: Graphic) {
+    this.start = start;
+    this.end = end;
     this._graphic = graphic?graphic:new Graphic("#B3B3B3","#000000",0);
   }
 
@@ -44,20 +43,20 @@ export class Vertex {
   /**
     Generate SVG Circle Element for the vertex
     @function
-    @return {SVGCircleElement}
+    @return {SVG}
   */
-  private genSVG():SVGCircleElement {
-    let v = <SVGCircleElement>document.createElementNS("http://www.w3.org/2000/svg","circle");
+  private genSVG():SVGLineElement {
+    let v = <SVGLineElement>document.createElementNS("http://www.w3.org/2000/svg","line");
     //v.setAttribute("cx",this._x.toString());
     setElementAttributes(v, {
-      "cx": this.x.toString(),
-      "cy": this.y.toString(),
-      "r": this.radius.toString(),
+      "x1": this.start.x.toString(),
+      "y1": this.start.y.toString(),
+      "x2": this.end.x.toString(),
+      "y2": this.end.y.toString(),
       "fill": this._graphic.fill,
       "stroke": this._graphic.stroke,
       "stroke-width": this._graphic.strokeWidth.toString()
     });
     return v;
   }
-
 }

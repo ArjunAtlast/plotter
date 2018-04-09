@@ -6,3 +6,7 @@ var graphic_1 = require("./models/graphic");
 exports.Graphic = graphic_1.Graphic;
 var vertex_1 = require("./models/vertex");
 exports.Vertex = vertex_1.Vertex;
+var edge_1 = require("./models/edge");
+exports.Edge = edge_1.Edge;
+var graph_1 = require("./models/graph");
+exports.Graph = graph_1.Graph;
