@@ -1,0 +1,28 @@
+{
+  "name": "plotter-js",
+  "version": "1.0.0",
+  "description": "A Node module for plotting graphs in SVG.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArjunAtlast/plotter.git"
+  },
+  "keywords": [
+    "plotter",
+    "js",
+    "graph"
+  ],
+  "author": "Arjun Atlast",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArjunAtlast/plotter/issues"
+  },
+  "homepage": "https://github.com/ArjunAtlast/plotter#readme",
+  "devDependencies": {
+    "typescript": "^2.8.1"
+  }
+}
