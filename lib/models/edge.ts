@@ -7,6 +7,7 @@ export class Edge {
   start: Vertex;
   end: Vertex;
   private _graphic: Graphic;
+  private svg?: SVGLineElement;
 
   /**
     Creates a new Edge
@@ -57,6 +58,7 @@ export class Edge {
       "stroke": this._graphic.stroke,
       "stroke-width": this._graphic.strokeWidth.toString()
     });
+    this.svg = v;
     return v;
   }
 }

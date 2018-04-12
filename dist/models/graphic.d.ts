@@ -10,3 +10,4 @@ export declare class Graphic {
     */
     constructor(fill: string, stroke: string, strokeWidth: number);
 }
+export declare const DEFAULT_STYLE: Graphic;

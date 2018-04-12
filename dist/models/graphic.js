@@ -15,3 +15,4 @@ var Graphic = /** @class */ (function () {
     return Graphic;
 }());
 exports.Graphic = Graphic;
+exports.DEFAULT_STYLE = new Graphic("#fdfdfd", "#2e2e2e", 5);

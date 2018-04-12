@@ -5,6 +5,7 @@ export declare class Vertex {
     y: number;
     radius: number;
     private _graphic;
+    private svg?;
     /**
       Creates a new Vertex
       @constructor
@@ -13,6 +14,7 @@ export declare class Vertex {
       @param {number} radius - Radius of the vertex when plotted
     */
     constructor(x: number, y: number, radius: number, graphic?: Graphic);
+    readonly graphic: Graphic;
     /**
       Set vertex style for plotting
       @function
@@ -31,4 +33,28 @@ export declare class Vertex {
       @return {SVGCircleElement}
     */
     private genSVG();
+    /**
+    Calculate angle of a vertex from this vertex
+    @function
+    @param {Vertex} v - Attributes object
+    @return {number}
+    */
+    angleTo(v: Vertex): number;
+    /**
+    Calculate distance between vertices
+    @function
+    @param {Vertex} v - Attributes object
+    @return {number}
+    */
+    distanceFrom(v: Vertex): number;
+    /**
+    Create vertex at an angle and distance from this vertex
+    @function
+    @param {number} angle - Angle in radians
+    @param {number} distance - Distance
+    @param {number} radius - Radius of
+    @param {Graphic} [graphic]
+    @return {Vertex}
+    */
+    vertexAt(angle: number, distance: number, radius: number, graphic?: Graphic): Vertex;
 }

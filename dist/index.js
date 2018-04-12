@@ -10,3 +10,7 @@ var edge_1 = require("./models/edge");
 exports.Edge = edge_1.Edge;
 var graph_1 = require("./models/graph");
 exports.Graph = graph_1.Graph;
+var star_1 = require("./models/star");
+exports.Star = star_1.Star;
+var mesh_1 = require("./models/mesh");
+exports.Mesh = mesh_1.Mesh;

@@ -49,6 +49,7 @@ var Edge = /** @class */ (function () {
             "stroke": this._graphic.stroke,
             "stroke-width": this._graphic.strokeWidth.toString()
         });
+        this.svg = v;
         return v;
     };
     return Edge;

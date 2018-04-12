@@ -5,6 +5,7 @@ export declare class Edge {
     start: Vertex;
     end: Vertex;
     private _graphic;
+    private svg?;
     /**
       Creates a new Edge
       @constructor

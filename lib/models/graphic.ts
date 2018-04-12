@@ -15,3 +15,5 @@ export class Graphic {
     this.strokeWidth = strokeWidth;
   }
 }
+
+export const DEFAULT_STYLE = new Graphic("#fdfdfd", "#2e2e2e", 5);

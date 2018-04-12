@@ -16,6 +16,13 @@ var Vertex = /** @class */ (function () {
         this.radius = radius;
         this._graphic = graphic ? graphic : new graphic_1.Graphic("#B3B3B3", "#000000", 0);
     }
+    Object.defineProperty(Vertex.prototype, "graphic", {
+        get: function () {
+            return this._graphic;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
       Set vertex style for plotting
       @function
@@ -49,6 +56,49 @@ var Vertex = /** @class */ (function () {
             "stroke": this._graphic.stroke,
             "stroke-width": this._graphic.strokeWidth.toString()
         });
+        this.svg = v;
+        return v;
+    };
+    /**
+    Calculate angle of a vertex from this vertex
+    @function
+    @param {Vertex} v - Attributes object
+    @return {number}
+    */
+    Vertex.prototype.angleTo = function (v) {
+        var xd = v.x - this.x;
+        var yd = v.y - this.y;
+        var dist = this.distanceFrom(v);
+        //if distance is 0 then angle is 0
+        if (dist == 0)
+            return 0;
+        var rads = Math.acos(xd / dist);
+        return (yd >= 0) ? utility_1.precisionRound(rads, 5) : utility_1.precisionRound(Math.PI + rads, 5);
+    };
+    /**
+    Calculate distance between vertices
+    @function
+    @param {Vertex} v - Attributes object
+    @return {number}
+    */
+    Vertex.prototype.distanceFrom = function (v) {
+        var xd = this.x - v.x;
+        var yd = this.y - v.y;
+        return utility_1.precisionRound(Math.sqrt(xd * xd + yd * yd), 5);
+    };
+    /**
+    Create vertex at an angle and distance from this vertex
+    @function
+    @param {number} angle - Angle in radians
+    @param {number} distance - Distance
+    @param {number} radius - Radius of
+    @param {Graphic} [graphic]
+    @return {Vertex}
+    */
+    Vertex.prototype.vertexAt = function (angle, distance, radius, graphic) {
+        var x = utility_1.precisionRound(this.x + distance * Math.cos(angle), 5);
+        var y = utility_1.precisionRound(this.y + distance * Math.sin(angle), 5);
+        var v = new Vertex(x, y, radius, graphic);
         return v;
     };
     return Vertex;
