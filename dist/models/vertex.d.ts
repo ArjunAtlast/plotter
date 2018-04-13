@@ -81,4 +81,11 @@ export declare class Vertex {
     @return {Vertex}
     */
     vertexAt(angle: number, distance: number, radius: number, graphic?: Graphic): Vertex;
+    /**
+    Rotate the vertex based on an axis
+    @function
+    @param {Vertex} axis - Axis point of rotation
+    @param {number} angle - Angle in radians
+    */
+    rotate(axis: Vertex, angle: number): void;
 }

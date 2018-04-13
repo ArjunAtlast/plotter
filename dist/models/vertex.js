@@ -146,12 +146,7 @@ var Vertex = /** @class */ (function () {
     Vertex.prototype.angleTo = function (v) {
         var xd = v.x - this.x;
         var yd = v.y - this.y;
-        var dist = this.distanceFrom(v);
-        //if distance is 0 then angle is 0
-        if (dist == 0)
-            return 0;
-        var rads = Math.acos(xd / dist);
-        return (yd >= 0) ? utility_1.precisionRound(rads, 5) : utility_1.precisionRound(Math.PI + rads, 5);
+        return utility_1.precisionRound(Math.atan2(yd, xd), 5);
     };
     /**
     Calculate distance between vertices
@@ -178,6 +173,20 @@ var Vertex = /** @class */ (function () {
         var y = utility_1.precisionRound(this.y + distance * Math.sin(angle), 5);
         var v = new Vertex(x, y, radius, graphic);
         return v;
+    };
+    /**
+    Rotate the vertex based on an axis
+    @function
+    @param {Vertex} axis - Axis point of rotation
+    @param {number} angle - Angle in radians
+    */
+    Vertex.prototype.rotate = function (axis, angle) {
+        var a = axis.angleTo(this);
+        var an = (angle + a) % (2 * Math.PI);
+        var d = axis.distanceFrom(this);
+        var v = axis.vertexAt(an, d, 0);
+        this.x = v.x;
+        this.y = v.y;
     };
     return Vertex;
 }());

@@ -157,13 +157,8 @@ export class Vertex {
   angleTo(v: Vertex): number {
     var xd = v.x - this.x;
     var yd = v.y - this.y;
-    var dist = this.distanceFrom(v);
 
-    //if distance is 0 then angle is 0
-    if(dist == 0) return 0;
-
-    var rads = Math.acos(xd/dist);
-    return (yd >= 0)? precisionRound(rads,5) : precisionRound(Math.PI + rads,5);
+    return precisionRound(Math.atan2(yd, xd),5);
   }
 
   /**
@@ -193,6 +188,21 @@ export class Vertex {
     var v = new Vertex(x,y,radius,graphic);
 
     return v;
+  }
+
+  /**
+  Rotate the vertex based on an axis
+  @function
+  @param {Vertex} axis - Axis point of rotation
+  @param {number} angle - Angle in radians
+  */
+  rotate(axis:Vertex, angle:number) {
+    let a = axis.angleTo(this);
+    let an = (angle+a)%(2*Math.PI);
+    let d = axis.distanceFrom(this);
+    let v = axis.vertexAt(an,d,0);
+    this.x = v.x;
+    this.y = v.y;
   }
 
 }

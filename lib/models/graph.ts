@@ -1,6 +1,7 @@
 import { Vertex } from './vertex';
 import { Edge } from './edge';
 import { Canvas } from './canvas';
+import { precisionRound } from '../helpers/utility';
 
 export class Graph {
   vertices: Vertex[];
@@ -15,6 +16,17 @@ export class Graph {
   constructor(vertices:Vertex[], edges:Edge[]) {
     this.vertices = vertices;
     this.edges = edges;
+  }
+
+  centroid(): Vertex {
+    let sx = 0;
+    let sy = 0;
+    for(var v of this.vertices) {
+      sx+=v.x;
+      sy+=v.y;
+    }
+    let n = this.vertices.length;
+    return new Vertex( precisionRound(sx/n,5), precisionRound(sy/n,5), 0);
   }
 
   /**
@@ -55,6 +67,18 @@ export class Graph {
     }
     for(var e of this.edges) {
       e.remove();
+    }
+  }
+
+  /**
+  Rotate graph based on an axis
+  @function
+  @param {Vertex} axis - Axis point of rotation
+  @param {number} angle - Angle in radians
+  */
+  rotate(axis:Vertex, angle:number) {
+    for(var v of this.vertices) {
+      v.rotate(axis, angle);
     }
   }
 

@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var vertex_1 = require("./vertex");
+var utility_1 = require("../helpers/utility");
 var Graph = /** @class */ (function () {
     /**
       Creates a new Graph
@@ -11,6 +13,17 @@ var Graph = /** @class */ (function () {
         this.vertices = vertices;
         this.edges = edges;
     }
+    Graph.prototype.centroid = function () {
+        var sx = 0;
+        var sy = 0;
+        for (var _i = 0, _a = this.vertices; _i < _a.length; _i++) {
+            var v = _a[_i];
+            sx += v.x;
+            sy += v.y;
+        }
+        var n = this.vertices.length;
+        return new vertex_1.Vertex(utility_1.precisionRound(sx / n, 5), utility_1.precisionRound(sy / n, 5), 0);
+    };
     /**
       Plot vertex to canvas
       @function
@@ -53,6 +66,18 @@ var Graph = /** @class */ (function () {
         for (var _b = 0, _c = this.edges; _b < _c.length; _b++) {
             var e = _c[_b];
             e.remove();
+        }
+    };
+    /**
+    Rotate graph based on an axis
+    @function
+    @param {Vertex} axis - Axis point of rotation
+    @param {number} angle - Angle in radians
+    */
+    Graph.prototype.rotate = function (axis, angle) {
+        for (var _i = 0, _a = this.vertices; _i < _a.length; _i++) {
+            var v = _a[_i];
+            v.rotate(axis, angle);
         }
     };
     /**

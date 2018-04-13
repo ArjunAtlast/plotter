@@ -11,6 +11,7 @@ export declare class Graph {
       @param {Edge[]} edges - Y Coordinate
     */
     constructor(vertices: Vertex[], edges: Edge[]);
+    centroid(): Vertex;
     /**
       Plot vertex to canvas
       @function
@@ -27,6 +28,13 @@ export declare class Graph {
     @function
     */
     remove(): void;
+    /**
+    Rotate graph based on an axis
+    @function
+    @param {Vertex} axis - Axis point of rotation
+    @param {number} angle - Angle in radians
+    */
+    rotate(axis: Vertex, angle: number): void;
     /**
     Union the graph with another graph
     @param {Graph} graph
