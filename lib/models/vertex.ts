@@ -1,5 +1,6 @@
 import { Graphic } from "./graphic";
 import { Canvas } from "./canvas";
+import { Edge } from "./edge";
 import { setElementAttributes, precisionRound } from "../helpers/utility";
 
 export class Vertex {
@@ -9,6 +10,7 @@ export class Vertex {
   radius: number;
   private _graphic: Graphic;
   private svg?: SVGCircleElement;
+  private links: any[] = [];
   /**
     Creates a new Vertex
     @constructor
@@ -44,6 +46,85 @@ export class Vertex {
   plot(canvas: Canvas) {
     let v = this.genSVG();
     canvas.add(v);
+  }
+
+  /**
+  Re render the vertex
+  @function
+  */
+  rePaint() {
+    if(this.svg) {
+      setElementAttributes(this.svg, {
+        "cx": this.x.toString(),
+        "cy": this.y.toString(),
+        "r": this.radius.toString(),
+        "fill": this._graphic.fill,
+        "stroke": this._graphic.stroke,
+        "stroke-width": this._graphic.strokeWidth.toString()
+      });
+      for(let obj of this.links) {
+        try {
+          obj.rePaint();
+        }
+        catch(e) {
+          console.error("Cannot call rePaint() method of linked object"+obj)
+        }
+      }
+    }
+  }
+
+  /**
+  Remove the vertex from canvas
+  @function
+  */
+  remove() {
+    if(this.svg) {
+      this.svg.remove();
+    }
+    for(let obj of this.links) {
+      try {
+        obj.remove();
+      }
+      catch(e) {
+        console.error("Cannot call remove() method of linked object"+obj);
+      }
+    }
+  }
+
+  /**
+  Link Items to the vertex
+  @function
+  */
+  link(obj:any) {
+      this.links.push(obj);
+  }
+
+  linkMultiple(objs:any[]) {
+    for(let obj of objs) {
+      this.link(obj);
+    }
+  }
+
+  /**
+  Remove an item link
+  @function
+  */
+  unlink(obj:any) {
+    this.links = this.links.filter((lnk:any) => {
+      if(lnk === obj) return false;
+      return true;
+    });
+  }
+
+  unlinkMultiple(objs:any[]) {
+    this.links = this.links.filter((lnk:any) => {
+      if(objs.indexOf(lnk)!=-1) return false;
+      return true;
+    });
+  }
+
+  unlinkAll() {
+    this.links = [];
   }
 
   /**

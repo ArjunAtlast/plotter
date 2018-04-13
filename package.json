@@ -1,6 +1,6 @@
 {
   "name": "plotter-js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A Node module for plotting graphs in SVG.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

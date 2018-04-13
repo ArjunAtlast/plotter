@@ -13,7 +13,7 @@ var Edge = /** @class */ (function () {
     function Edge(start, end, graphic) {
         this.start = start;
         this.end = end;
-        this._graphic = graphic ? graphic : new graphic_1.Graphic("#B3B3B3", "#000000", 0);
+        this._graphic = graphic ? graphic : graphic_1.DEFAULT_STYLE;
     }
     /**
       Set vertex style for plotting
@@ -31,6 +31,30 @@ var Edge = /** @class */ (function () {
     Edge.prototype.plot = function (canvas) {
         var v = this.genSVG();
         canvas.add(v);
+    };
+    /**
+    Re render the edge
+    @function
+    */
+    Edge.prototype.rePaint = function () {
+        utility_1.setElementAttributes(this.svg, {
+            "x1": this.start.x.toString(),
+            "y1": this.start.y.toString(),
+            "x2": this.end.x.toString(),
+            "y2": this.end.y.toString(),
+            "fill": this._graphic.fill,
+            "stroke": this._graphic.stroke,
+            "stroke-width": this._graphic.strokeWidth.toString()
+        });
+    };
+    /**
+    Remove the edge from canvas
+    @function
+    */
+    Edge.prototype.remove = function () {
+        if (this.svg) {
+            this.svg.remove();
+        }
     };
     /**
       Generate SVG Circle Element for the vertex

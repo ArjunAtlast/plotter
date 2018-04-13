@@ -11,6 +11,7 @@ var Vertex = /** @class */ (function () {
       @param {number} radius - Radius of the vertex when plotted
     */
     function Vertex(x, y, radius, graphic) {
+        this.links = [];
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -39,6 +40,83 @@ var Vertex = /** @class */ (function () {
     Vertex.prototype.plot = function (canvas) {
         var v = this.genSVG();
         canvas.add(v);
+    };
+    /**
+    Re render the vertex
+    @function
+    */
+    Vertex.prototype.rePaint = function () {
+        if (this.svg) {
+            utility_1.setElementAttributes(this.svg, {
+                "cx": this.x.toString(),
+                "cy": this.y.toString(),
+                "r": this.radius.toString(),
+                "fill": this._graphic.fill,
+                "stroke": this._graphic.stroke,
+                "stroke-width": this._graphic.strokeWidth.toString()
+            });
+            for (var _i = 0, _a = this.links; _i < _a.length; _i++) {
+                var obj = _a[_i];
+                try {
+                    obj.rePaint();
+                }
+                catch (e) {
+                    console.error("Cannot call rePaint() method of linked object" + obj);
+                }
+            }
+        }
+    };
+    /**
+    Remove the vertex from canvas
+    @function
+    */
+    Vertex.prototype.remove = function () {
+        if (this.svg) {
+            this.svg.remove();
+        }
+        for (var _i = 0, _a = this.links; _i < _a.length; _i++) {
+            var obj = _a[_i];
+            try {
+                obj.remove();
+            }
+            catch (e) {
+                console.error("Cannot call remove() method of linked object" + obj);
+            }
+        }
+    };
+    /**
+    Link Items to the vertex
+    @function
+    */
+    Vertex.prototype.link = function (obj) {
+        this.links.push(obj);
+    };
+    Vertex.prototype.linkMultiple = function (objs) {
+        for (var _i = 0, objs_1 = objs; _i < objs_1.length; _i++) {
+            var obj = objs_1[_i];
+            this.link(obj);
+        }
+    };
+    /**
+    Remove an item link
+    @function
+    */
+    Vertex.prototype.unlink = function (obj) {
+        this.links = this.links.filter(function (lnk) {
+            if (lnk === obj)
+                return false;
+            return true;
+        });
+    };
+    Vertex.prototype.unlinkMultiple = function (objs) {
+        this.links = this.links.filter(function (lnk) {
+            if (objs.indexOf(lnk) != -1)
+                return false;
+            return true;
+        });
+    };
+    Vertex.prototype.unlinkAll = function () {
+        this.links = [];
     };
     /**
       Generate SVG Circle Element for the vertex

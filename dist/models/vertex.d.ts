@@ -6,6 +6,7 @@ export declare class Vertex {
     radius: number;
     private _graphic;
     private svg?;
+    private links;
     /**
       Creates a new Vertex
       @constructor
@@ -27,6 +28,29 @@ export declare class Vertex {
       @param {Canvas} canvas
     */
     plot(canvas: Canvas): void;
+    /**
+    Re render the vertex
+    @function
+    */
+    rePaint(): void;
+    /**
+    Remove the vertex from canvas
+    @function
+    */
+    remove(): void;
+    /**
+    Link Items to the vertex
+    @function
+    */
+    link(obj: any): void;
+    linkMultiple(objs: any[]): void;
+    /**
+    Remove an item link
+    @function
+    */
+    unlink(obj: any): void;
+    unlinkMultiple(objs: any[]): void;
+    unlinkAll(): void;
     /**
       Generate SVG Circle Element for the vertex
       @function

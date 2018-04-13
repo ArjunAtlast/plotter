@@ -17,4 +17,32 @@ export declare class Graph {
       @param {Canvas} canvas
     */
     plot(canvas: Canvas): void;
+    /**
+    Re render the graph
+    @function
+    */
+    rePaint(): void;
+    /**
+    Remove graph from canvas
+    @function
+    */
+    remove(): void;
+    /**
+    Union the graph with another graph
+    @param {Graph} graph
+    @return {Graph}
+    */
+    union(graph: Graph): Graph;
+    /**
+    Intersect the graph with another graph
+    @param {Graph} graph
+    @return {Graph}
+    */
+    intersect(graph: Graph): Graph;
+    /**
+    Subtract the graph with another graph
+    @param {Graph} graph
+    @return {Graph}
+    */
+    subtract(graph: Graph): Graph;
 }

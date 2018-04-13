@@ -5,3 +5,7 @@ export { Edge } from './models/edge';
 export { Graph } from './models/graph';
 export { Star } from './models/star';
 export { Mesh } from './models/mesh';
+export { Shape } from './models/shape';
+export { Path } from './models/path';
+export { Polygon } from './models/shapes/polygon';
+export { Parallellogram, Rhombus, Rectangle, Square, Trapezoid } from './models/shapes/quadri';

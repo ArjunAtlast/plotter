@@ -1,5 +1,5 @@
 import { Vertex } from "./vertex";
-import { Graphic } from "./graphic";
+import { Graphic, DEFAULT_STYLE } from "./graphic";
 import { Canvas } from "./canvas";
 import { setElementAttributes } from "../helpers/utility";
 
@@ -19,7 +19,7 @@ export class Edge {
   constructor(start: Vertex, end: Vertex, graphic?: Graphic) {
     this.start = start;
     this.end = end;
-    this._graphic = graphic?graphic:new Graphic("#B3B3B3","#000000",0);
+    this._graphic = graphic?graphic:DEFAULT_STYLE;
   }
 
   /**
@@ -39,6 +39,32 @@ export class Edge {
   plot(canvas: Canvas) {
     let v = this.genSVG();
     canvas.add(v);
+  }
+
+  /**
+  Re render the edge
+  @function
+  */
+  rePaint() {
+    setElementAttributes(this.svg, {
+      "x1": this.start.x.toString(),
+      "y1": this.start.y.toString(),
+      "x2": this.end.x.toString(),
+      "y2": this.end.y.toString(),
+      "fill": this._graphic.fill,
+      "stroke": this._graphic.stroke,
+      "stroke-width": this._graphic.strokeWidth.toString()
+    });
+  }
+
+  /**
+  Remove the edge from canvas
+  @function
+  */
+  remove() {
+    if(this.svg) {
+      this.svg.remove();
+    }
   }
 
   /**

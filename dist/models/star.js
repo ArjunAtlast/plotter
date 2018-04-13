@@ -12,20 +12,16 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var graph_1 = require("./graph");
 var edge_1 = require("./edge");
-var graphic_1 = require("./graphic");
 var utility_1 = require("../helpers/utility");
 var Star = /** @class */ (function (_super) {
     __extends(Star, _super);
     function Star(core, node, node_count, radius, edge_style) {
         var _this = this;
-        if (!edge_style)
-            edge_style = graphic_1.DEFAULT_STYLE;
         var v = [core];
         var e = [];
         var ca = core.angleTo(node); //angle of current node (incremented for each node)
         var ad = utility_1.precisionRound(2 * Math.PI / node_count, 5); //angle between each edge
         for (var i = 0; i < node_count; i++) {
-            console.log(ca);
             var newNode = core.vertexAt(ca, radius, node.radius, node.graphic);
             var newEdge = new edge_1.Edge(core, newNode, edge_style);
             v.push(newNode);

@@ -27,6 +27,16 @@ export declare class Edge {
     */
     plot(canvas: Canvas): void;
     /**
+    Re render the edge
+    @function
+    */
+    rePaint(): void;
+    /**
+    Remove the edge from canvas
+    @function
+    */
+    remove(): void;
+    /**
       Generate SVG Circle Element for the vertex
       @function
       @return {SVG}
