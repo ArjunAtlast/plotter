@@ -9,3 +9,6 @@ export { Shape } from './models/shape';
 export { Path } from './models/path';
 export { Polygon } from './models/shapes/polygon';
 export { Parallellogram, Rhombus, Rectangle, Square, Trapezoid } from './models/shapes/quadri';
+export { Wave } from './models/paths/wave';
+export { Step } from './models/paths/step';
+export { Triangle, RightTriangle, EquiTriangle, IsoTriangle } from './models/shapes/triangle';

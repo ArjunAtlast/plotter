@@ -31,7 +31,6 @@ export class Canvas {
     try {
       /* Create SVG Element */
       let svg = <SVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
-      console.log(svg);
       setElementAttributes(svg, {
         "id": this.name,
         "width": this.width+"px",

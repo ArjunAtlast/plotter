@@ -15,6 +15,13 @@ var Edge = /** @class */ (function () {
         this.end = end;
         this._graphic = graphic ? graphic : graphic_1.DEFAULT_STYLE;
     }
+    Object.defineProperty(Edge.prototype, "graphic", {
+        get: function () {
+            return this._graphic;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
       Set vertex style for plotting
       @function

@@ -188,6 +188,36 @@ var Vertex = /** @class */ (function () {
         this.x = v.x;
         this.y = v.y;
     };
+    /**
+    Translate vertex by the given distance in x and y axis
+    @function
+    @param {number} x - Axis point of rotation
+    @param {number} y - Angle in radians
+    */
+    Vertex.prototype.translate = function (x, y) {
+        this.x += x;
+        this.y += y;
+    };
+    /**
+    Scale the vertex using the axis and ratio given
+    @function
+    @param {Vertex} axis - Axis point of Scale
+    @param {number} ratio
+    */
+    Vertex.prototype.scale = function (axis, ratio) {
+        var dx = this.x - axis.x;
+        var dy = this.y - axis.y;
+        ratio = Math.abs(ratio);
+        this.translate((ratio - 1) * dx, (ratio - 1) * dy);
+    };
+    /**
+    Create a copy of the vertex
+    @function
+    @return {Vertex}
+    */
+    Vertex.prototype.copy = function () {
+        return new Vertex(this.x, this.y, this.radius, this.graphic);
+    };
     return Vertex;
 }());
 exports.Vertex = Vertex;

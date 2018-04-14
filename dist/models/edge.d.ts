@@ -14,6 +14,7 @@ export declare class Edge {
       @param {Graphic} radius - Radius of the vertex when plotted
     */
     constructor(start: Vertex, end: Vertex, graphic?: Graphic);
+    readonly graphic: Graphic;
     /**
       Set vertex style for plotting
       @function

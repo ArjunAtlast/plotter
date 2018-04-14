@@ -205,4 +205,37 @@ export class Vertex {
     this.y = v.y;
   }
 
+  /**
+  Translate vertex by the given distance in x and y axis
+  @function
+  @param {number} x - Axis point of rotation
+  @param {number} y - Angle in radians
+  */
+  translate(x: number, y:number) {
+    this.x += x;
+    this.y += y;
+  }
+
+  /**
+  Scale the vertex using the axis and ratio given
+  @function
+  @param {Vertex} axis - Axis point of Scale
+  @param {number} ratio
+  */
+  scale(axis: Vertex, ratio:number) {
+    let dx = this.x - axis.x;
+    let dy = this.y - axis.y;
+    ratio = Math.abs(ratio);
+    this.translate((ratio-1)*dx, (ratio-1)*dy);
+  }
+
+  /**
+  Create a copy of the vertex
+  @function
+  @return {Vertex}
+  */
+  copy():Vertex {
+    return new Vertex(this.x, this.y, this.radius, this.graphic);
+  }
+
 }

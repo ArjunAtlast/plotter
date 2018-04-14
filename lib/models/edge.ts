@@ -22,6 +22,10 @@ export class Edge {
     this._graphic = graphic?graphic:DEFAULT_STYLE;
   }
 
+  get graphic(): Graphic {
+    return this._graphic;
+  }
+
   /**
     Set vertex style for plotting
     @function

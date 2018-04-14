@@ -88,4 +88,24 @@ export declare class Vertex {
     @param {number} angle - Angle in radians
     */
     rotate(axis: Vertex, angle: number): void;
+    /**
+    Translate vertex by the given distance in x and y axis
+    @function
+    @param {number} x - Axis point of rotation
+    @param {number} y - Angle in radians
+    */
+    translate(x: number, y: number): void;
+    /**
+    Scale the vertex using the axis and ratio given
+    @function
+    @param {Vertex} axis - Axis point of Scale
+    @param {number} ratio
+    */
+    scale(axis: Vertex, ratio: number): void;
+    /**
+    Create a copy of the vertex
+    @function
+    @return {Vertex}
+    */
+    copy(): Vertex;
 }

@@ -29,7 +29,6 @@ var Canvas = /** @class */ (function () {
         try {
             /* Create SVG Element */
             var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            console.log(svg);
             utility_1.setElementAttributes(svg, {
                 "id": this.name,
                 "width": this.width + "px",
