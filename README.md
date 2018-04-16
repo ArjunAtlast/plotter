@@ -25,7 +25,7 @@ Canvas is the basement for every other element to be plotted.
 
 ### Methods
 
-1. **init():boolean**
+**init():boolean**
 
 Initialize the canvas.*(canvas can be used only after initializing)*.
 Returns **true** if successful else **false**.
@@ -56,7 +56,7 @@ Vertex is used to denote a point in plane. This is the smallest unit in the modu
 
 ### Methods
 
-1. **style(graphic:Graphic):void**
+**style(graphic:Graphic):void**
 
 Set the style of the vertex.
 
@@ -71,7 +71,7 @@ Set the style of the vertex.
   ...
 ```
 
-2. **plot(canvas: Canvas):void**
+**plot(canvas: Canvas):void**
 
 Plot the vertex into the canvas.
 
@@ -87,7 +87,7 @@ Plot the vertex into the canvas.
   ...
 ```
 
-3. **rePaint():void**
+**rePaint():void**
 
 Re-render the vertex into the canvas.
 > *Note:* Any changes made to the Vertex object will only take effect after calling rePaint.
@@ -106,9 +106,9 @@ Re-render the vertex into the canvas.
   ...
 ```
 
-4. **remove():void**
+**remove():void**
 
-Remove the plotted vertex from canvas.
+  Remove the plotted vertex from canvas.
 
 *Usage*
 ```javascript
