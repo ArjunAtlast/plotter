@@ -235,6 +235,7 @@ Move the vertex by an offset (x,y)
 Scaling the vertex actually tranforms the vertex moving farther or closer to the axis based on the ratio.
 
 > The *rotate, translate, scale* are tranform methods.
+
 > *Note:* The changes made using tranform methods won't take effect in canvas unless you repaint the vertex.
 
 *Usage*
@@ -271,8 +272,11 @@ Denotes the line connecting two vertices.
 ### Methods
 
 **style(graphic:Graphic):void**
+
 **plot(canvas: Canvas):void**
+
 **rePaint():void**
+
 **remove():void**
 
 > All methods work similiar to that of [Vertex](#vertex)
