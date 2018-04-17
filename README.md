@@ -1,6 +1,8 @@
 # Plotter
 A Node Module for plotting Graphs in SVG.
 
+[![Coverage Status](https://coveralls.io/repos/github/ArjunAtlast/plotter/badge.svg?branch=master)](https://coveralls.io/github/ArjunAtlast/plotter?branch=master)
+
 ## API
 
 * [Canvas](#canvas)
