@@ -69,6 +69,8 @@ describe('checking Components', () => {
   });
   it('Wave', () => {
     expect(new index.Wave(new index.Path([u]))).to.be.an.instanceOf(index.Wave);
+    expect(new index.Wave(new index.Path([]))).to.be.an.instanceOf(index.Wave);
+    expect(new index.Wave(new index.Path([u,v]))).to.be.an.instanceOf(index.Wave);
   });
 });
 
