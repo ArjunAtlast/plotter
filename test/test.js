@@ -74,9 +74,5 @@ describe('Test triangle functions', () => {
     var result = tr.angle(1);
     expect(result).to.be.closeTo(1.856,0.001);
   });
-  it('should be close to 0.5', () => {
-    var result = tr.angle(2);
-    expect(result).to.be.closeTo(0.5,0.001);
-  });
 
 });
