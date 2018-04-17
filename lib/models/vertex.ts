@@ -1,9 +1,10 @@
 import { Graphic } from "./graphic";
 import { Canvas } from "./canvas";
 import { Edge } from "./edge";
+import { Plottable } from "../interfaces/plottable";
 import { setElementAttributes, precisionRound } from "../helpers/utility";
 
-export class Vertex {
+export class Vertex implements Plottable {
 
   x: number;
   y: number;
@@ -95,11 +96,11 @@ export class Vertex {
   Link Items to the vertex
   @function
   */
-  link(obj:any) {
+  link(obj:Plottable) {
       this.links.push(obj);
   }
 
-  linkMultiple(objs:any[]) {
+  linkMultiple(objs:Plottable[]) {
     for(let obj of objs) {
       this.link(obj);
     }
@@ -109,14 +110,14 @@ export class Vertex {
   Remove an item link
   @function
   */
-  unlink(obj:any) {
+  unlink(obj:Plottable) {
     this.links = this.links.filter((lnk:any) => {
       if(lnk === obj) return false;
       return true;
     });
   }
 
-  unlinkMultiple(objs:any[]) {
+  unlinkMultiple(objs:Plottable[]) {
     this.links = this.links.filter((lnk:any) => {
       if(objs.indexOf(lnk)!=-1) return false;
       return true;

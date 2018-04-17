@@ -1,10 +1,11 @@
 import { Vertex } from './vertex';
 import { Edge } from './edge';
 import { Canvas } from './canvas';
+import { Plottable } from "../interfaces/plottable";
 import { precisionRound } from '../helpers/utility';
 import { Graphic } from './graphic';
 
-export class Graph {
+export class Graph implements Plottable{
   vertices: Vertex[];
   edges: Edge[];
 

@@ -1,9 +1,10 @@
 import { Vertex } from "./vertex";
 import { Graphic, DEFAULT_STYLE } from "./graphic";
 import { Canvas } from "./canvas";
+import { Plottable } from "../interfaces/plottable";
 import { setElementAttributes } from "../helpers/utility";
 
-export class Edge {
+export class Edge implements Plottable {
   start: Vertex;
   end: Vertex;
   private _graphic: Graphic;
