@@ -17,15 +17,18 @@ var Wave = /** @class */ (function (_super) {
     function Wave(path, amount) {
         var _this = this;
         var p = [];
-        var x = path.vertices[path.vertices.length - 1].x - path.vertices[0].x;
-        var y = path.vertices[path.vertices.length - 1].y - path.vertices[0].y;
-        for (var i = 0; i < amount; i++) {
-            for (var _i = 0, _a = path.vertices; _i < _a.length; _i++) {
-                var v = _a[_i];
-                p.push(new vertex_1.Vertex(v.x + i * x, v.y + i * y, v.radius, v.graphic));
+        if (path.vertices.length > 1) {
+            var x = path.vertices[path.vertices.length - 1].x - path.vertices[0].x;
+            var y = path.vertices[path.vertices.length - 1].y - path.vertices[0].y;
+            for (var i = 0; i < amount; i++) {
+                for (var _i = 0, _a = path.vertices; _i < _a.length; _i++) {
+                    var v = _a[_i];
+                    p.push(new vertex_1.Vertex(v.x + i * x, v.y + i * y, v.radius, v.graphic));
+                }
             }
+            _this = _super.call(this, p, path.edges[0].graphic) || this;
         }
-        _this = _super.call(this, p, path.edges[0].graphic) || this;
+        _this = _super.call(this, []) || this;
         return _this;
     }
     return Wave;

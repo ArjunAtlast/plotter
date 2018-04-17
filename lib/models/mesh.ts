@@ -15,12 +15,11 @@ export class Mesh extends Graph {
 
     let ca = core.angleTo(node); //angle of current node (incremented for each node)
     let ad = precisionRound(2*Math.PI/node_count, 5); //angle between each edge
-    
+
     let prevNode:Vertex|null = null;
     let firstNode:Vertex|null = null;
 
     for(let i=0; i<node_count; i++) {
-      console.log(ca);
       var newNode = core.vertexAt(ca,radius,node.radius,node.graphic);
       var newEdge = new Edge(core,newNode,edge_style);
       v.push(newNode);

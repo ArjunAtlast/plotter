@@ -9,6 +9,69 @@ var s = new index.Vertex(5,Math.sqrt(75),5);
 
 var tr = new index.Triangle(v,5,10,Math.PI/4);
 
+describe('checking Components', () => {
+  it('Vertex', () => {
+    expect(v).to.be.an.instanceOf(index.Vertex);
+  });
+  it('Edge', () => {
+    expect(new index.Edge(u,v)).to.be.an.instanceOf(index.Edge);
+  });
+  it('Graphic', () => {
+    expect(new index.Graphic("#fdfdfd", "#2e2e2e", 5)).to.be.an.instanceOf(index.Graphic);
+  });
+  it('Graph', () => {
+    expect(new index.Graph([],[])).to.be.an.instanceOf(index.Graph);
+  });
+  it('Star', () => {
+    expect(new index.Star(u,v,5,5)).to.be.an.instanceOf(index.Star);
+  });
+  it('Mesh', () => {
+    expect(new index.Mesh(u,v,5,5)).to.be.an.instanceOf(index.Mesh);
+  });
+  it('Shape', () => {
+    expect(new index.Shape([])).to.be.an.instanceOf(index.Shape);
+  });
+  it('Path', () => {
+    expect(new index.Path([])).to.be.an.instanceOf(index.Path);
+  });
+  it('Polygon', () => {
+    expect(new index.Polygon(u,5,5,v)).to.be.an.instanceOf(index.Polygon);
+  });
+  it('Parallellogram', () => {
+    expect(new index.Parallellogram(u,50,50,75)).to.be.an.instanceOf(index.Parallellogram);
+  });
+  it('Rhombus', () => {
+    expect(new index.Rhombus(u,50,75)).to.be.an.instanceOf(index.Rhombus);
+  });
+  it('Rectangle', () => {
+    expect(new index.Rectangle(u,50,75)).to.be.an.instanceOf(index.Rectangle);
+  });
+  it('Square', () => {
+    expect(new index.Square(u,50)).to.be.an.instanceOf(index.Square);
+  });
+  it('Trapezoid', () => {
+    expect(new index.Trapezoid(u,50,75,30,45)).to.be.an.instanceOf(index.Trapezoid);
+  });
+  it('Triangle', () => {
+    expect(tr).to.be.an.instanceOf(index.Triangle);
+  });
+  it('RightTriangle', () => {
+    expect(new index.RightTriangle(u,50,60)).to.be.an.instanceOf(index.RightTriangle);
+  });
+  it('EquiTriangle', () => {
+    expect(new index.EquiTriangle(u,50)).to.be.an.instanceOf(index.EquiTriangle);
+  });
+  it('IsoTriangle', () => {
+    expect(new index.IsoTriangle(u,50,60)).to.be.an.instanceOf(index.IsoTriangle);
+  });
+  it('Step', () => {
+    expect(new index.Step(u,50,50,10)).to.be.an.instanceOf(index.Step);
+  });
+  it('Wave', () => {
+    expect(new index.Wave(new index.Path([u]))).to.be.an.instanceOf(index.Wave);
+  });
+});
+
 describe('calculate Angle Test', () => {
   it('should be close to 0', () => {
     var result = v.angleTo(v);

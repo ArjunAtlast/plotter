@@ -27,7 +27,6 @@ var Mesh = /** @class */ (function (_super) {
         var prevNode = null;
         var firstNode = null;
         for (var i = 0; i < node_count; i++) {
-            console.log(ca);
             var newNode = core.vertexAt(ca, radius, node.radius, node.graphic);
             var newEdge = new edge_1.Edge(core, newNode, edge_style);
             v.push(newNode);
