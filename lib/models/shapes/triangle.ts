@@ -27,6 +27,7 @@ export class Triangle extends Shape {
       let u = this.vertices[(pos+1)%3];
       let v = this.vertices[(pos+2)%3];
       var rad = precisionRound(Math.abs(o.angleTo(u) - o.angleTo(v)),5);
+      if(rad > Math.PI) rad = 2*Math.PI - rad;
       return inDegrees? rad*180/Math.PI:rad;
     }
     return null;

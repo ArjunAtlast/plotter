@@ -1,7 +1,8 @@
 import { Vertex } from "./vertex";
 import { Graphic } from "./graphic";
 import { Canvas } from "./canvas";
-export declare class Edge {
+import { Plottable } from "../interfaces/plottable";
+export declare class Edge implements Plottable {
     start: Vertex;
     end: Vertex;
     private _graphic;

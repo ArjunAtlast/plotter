@@ -1,6 +1,7 @@
 import { Graphic } from "./graphic";
 import { Canvas } from "./canvas";
-export declare class Vertex {
+import { Plottable } from "../interfaces/plottable";
+export declare class Vertex implements Plottable {
     x: number;
     y: number;
     radius: number;
@@ -42,14 +43,14 @@ export declare class Vertex {
     Link Items to the vertex
     @function
     */
-    link(obj: any): void;
-    linkMultiple(objs: any[]): void;
+    link(obj: Plottable): void;
+    linkMultiple(objs: Plottable[]): void;
     /**
     Remove an item link
     @function
     */
-    unlink(obj: any): void;
-    unlinkMultiple(objs: any[]): void;
+    unlink(obj: Plottable): void;
+    unlinkMultiple(objs: Plottable[]): void;
     unlinkAll(): void;
     /**
       Generate SVG Circle Element for the vertex

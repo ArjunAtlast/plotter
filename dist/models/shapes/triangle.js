@@ -38,6 +38,8 @@ var Triangle = /** @class */ (function (_super) {
             var u = this.vertices[(pos + 1) % 3];
             var v = this.vertices[(pos + 2) % 3];
             var rad = utility_1.precisionRound(Math.abs(o.angleTo(u) - o.angleTo(v)), 5);
+            if (rad > Math.PI)
+                rad = 2 * Math.PI - rad;
             return inDegrees ? rad * 180 / Math.PI : rad;
         }
         return null;

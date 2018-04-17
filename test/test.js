@@ -78,9 +78,5 @@ describe('Test triangle functions', () => {
     var result = tr.angle(2);
     expect(result).to.be.closeTo(0.5,0.001);
   });
-  it('should be close to -5', () => {
-    var result = v.vertexAt(Math.PI,5,5).x;
-    expect(result).to.be.closeTo(-5,0.0001);
-  });
 
 });

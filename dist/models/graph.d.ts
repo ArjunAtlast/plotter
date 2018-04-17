@@ -1,8 +1,9 @@
 import { Vertex } from './vertex';
 import { Edge } from './edge';
 import { Canvas } from './canvas';
+import { Plottable } from "../interfaces/plottable";
 import { Graphic } from './graphic';
-export declare class Graph {
+export declare class Graph implements Plottable {
     vertices: Vertex[];
     edges: Edge[];
     /**
