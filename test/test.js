@@ -93,6 +93,24 @@ describe('calculate Angle Test', () => {
   });
 });
 
+describe('check tranform methods', () => {
+  it('translate()', () => {
+    t.translate(5,5);
+    expect(t.x).to.be.closeTo(5,0.0001);
+    expect(t.y).to.be.closeTo(0,0.0001);
+  });
+  it('rotate()', () => {
+    t.rotate(v,Math.PI/2);
+    expect(t.x).to.be.closeTo(0,0.0001);
+    expect(t.y).to.be.closeTo(5,0.0001);
+  });
+  it('scale()', () => {
+    t.scale(v,2);
+    expect(t.x).to.be.closeTo(0,0.0001);
+    expect(t.y).to.be.closeTo(10,0.0001);
+  });
+});
+
 describe('Test vertexAt ', () => {
   it('should be close to 5', () => {
     var result = v.vertexAt(0,5,5).x;
