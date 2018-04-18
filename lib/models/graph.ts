@@ -201,7 +201,7 @@ export class Graph implements Plottable{
   @param {Graph} graph
   @return {Graph}
   */
-  intersect(graph: Graph):Graph {
+  intersection(graph: Graph):Graph {
     let newGraph = new Graph([...this.vertices], [...this.edges]);
     newGraph.vertices = this.vertices.filter((v: Vertex) => {
       if(graph.vertices.indexOf(v)!=-1) return true;

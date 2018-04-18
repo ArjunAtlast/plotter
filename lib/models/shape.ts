@@ -10,7 +10,7 @@ export class Shape extends Graph {
     for(let i=1; i<points.length; i++) {
       e.push(new Edge(points[i-1],points[i], edge_style));
     }
-    e.push(new Edge(points[points.length-1], points[0], edge_style));
+    if(points.length > 1) e.push(new Edge(points[points.length-1], points[0], edge_style));
 
     super(points,e);
   }

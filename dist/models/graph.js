@@ -200,7 +200,7 @@ var Graph = /** @class */ (function () {
     @param {Graph} graph
     @return {Graph}
     */
-    Graph.prototype.intersect = function (graph) {
+    Graph.prototype.intersection = function (graph) {
         var newGraph = new Graph(this.vertices.slice(), this.edges.slice());
         newGraph.vertices = this.vertices.filter(function (v) {
             if (graph.vertices.indexOf(v) != -1)

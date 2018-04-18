@@ -75,7 +75,7 @@ export declare class Graph implements Plottable {
     @param {Graph} graph
     @return {Graph}
     */
-    intersect(graph: Graph): Graph;
+    intersection(graph: Graph): Graph;
     /**
     Subtract the graph with another graph
     @param {Graph} graph

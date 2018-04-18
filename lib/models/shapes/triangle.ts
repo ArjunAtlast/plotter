@@ -43,11 +43,11 @@ export class Triangle extends Shape {
   }
 }
 
-
 export class RightTriangle extends Triangle {
 
   constructor(baseVertex: Vertex, baseLength: number, height: number, edge_style?:Graphic) {
     super(baseVertex, baseLength, height, Math.PI/2, edge_style);
+
   }
 }
 

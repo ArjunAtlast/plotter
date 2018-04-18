@@ -8,6 +8,7 @@ var Graphic = /** @class */ (function () {
     @param {number} strokeWidth - Width of the stroke
     */
     function Graphic(fill, stroke, strokeWidth) {
+        if (strokeWidth === void 0) { strokeWidth = 1; }
         this.fill = fill;
         this.stroke = stroke;
         this.strokeWidth = strokeWidth;

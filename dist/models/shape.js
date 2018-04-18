@@ -20,7 +20,8 @@ var Shape = /** @class */ (function (_super) {
         for (var i = 1; i < points.length; i++) {
             e.push(new edge_1.Edge(points[i - 1], points[i], edge_style));
         }
-        e.push(new edge_1.Edge(points[points.length - 1], points[0], edge_style));
+        if (points.length > 1)
+            e.push(new edge_1.Edge(points[points.length - 1], points[0], edge_style));
         _this = _super.call(this, points, e) || this;
         return _this;
     }
